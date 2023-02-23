@@ -11,10 +11,10 @@ div{
 
 
 
-<h2>Estrutura de repetição for</h2>
+<h2>Estrutura de repetição while</h2>
 <p>
     Utilizada para repetir uma sequencia de
-    instrução um numero predeterminado de vezes.
+    instruções, enquanto uma condição for verdadeira.
 </p>
 
 <p>
@@ -26,13 +26,17 @@ div{
 </p>
 <div class="container">
 <?php
-    for($tabuada = 1; $tabuada <= 10; $tabuada++){
+    $tabuada = 1;
+    while($tabuada <= 10){
         echo "<div>";
-    for($contador = 0; $contador < 11; $contador++){
-    echo "$tabuada x $contador = " . $contador * $tabuada . "<br>" ;
-   
-    } 
+        $contador = 0;
+    while($contador <=10){
+        $resultado = $tabuada * $contador;
+        echo "$tabuada x $contador = $resultado <br>";
+        $contador++;
+   } 
     echo "</div>";
+    $tabuada++;
 }
 ?>
 </div>
