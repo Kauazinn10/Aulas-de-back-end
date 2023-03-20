@@ -1,29 +1,50 @@
-<h2>Alunos</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista de alunos</h1>
+    <hr>
+    <table border="1" width="100%">
+        <tr>
+            <th>Nome</th>
+            <th>Nota 1</th>
+            <th>Nota 2</th>
+            <th>Média</th>
+        </tr>
+    </table>
 
-<pre>
-<?php
-$aluno1 = array(
-    "nome" => "poliana silveira",
-    "nota1" => "7",
-    "nota2" => "9"
-);
-$aluno2 = array(
-    "nome" => "murilo alexandre",
-    "nota1" => "8",
-    "nota2" => "5"
-);
-$aluno3 = array(
-    "nome" => "andre felipe",
-    "nota1" => "6",
-    "nota2" => "7"
-);
-$aluno4 = array(
-    "nome" => "lavinia sandi",
-    "nota1" => "8",
-    "nota2" => "9"
-);
+    <script>
+        function criarLinha(nome,n1,n2){
+        var tabela = document.querySelector("table");
+        
+        var linha = tabela.insertRow();
+        var celNome = linha.insertCell();
+        var celNota1 = linha.insertCell();
+        var celNota2 = linha.insertCell();
+        var celMedia = linha.insertCell();
 
-$dados = [$aluno1, $aluno2, $aluno3,$aluno4];
+        celNome.innerText = nome;
+        celNota1.innerText = n1;
+        celNota2.innerText = n2;
+        celMedia.innerText = (n1 + n2) / 2;
+        }
+        //fazer uma requisição para o backend
+        fetch("http://localhost/3infoA/Yuri/aula%2011/alunos.php")
+        .then(response => response.json())
+        .then(json => {
+            for(var aluno of json){
+                criarLinha(aluno.nome,aluno.nota1,aluno.nota2);
+            }
+        });
 
-?>
-</pre>
+       
+        
+
+    </script>
+</body>
+</html>
